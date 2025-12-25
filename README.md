@@ -131,6 +131,8 @@ src/
 
 ## Web Vitals Scores
 
-Below is the latest Web Vitals performance snapshot for the application.
+Below is the latest Web Vitals performance for the application.
 
-![Web Vitals Scores](./screenshots/web-vitals.png)
+![web-vitals](./screenshots/web-vitals.png)
+
+[View Page Report](https://pagespeed.web.dev/analysis/https-omdb-next-beta-vercel-app/flfu0r52i6?form_factor=mobile)
