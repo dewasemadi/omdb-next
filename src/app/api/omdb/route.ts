@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { cookies } from "next/headers"
 import axios from "axios"
-import { COOKIES } from "@/constants/keys"
+import { COOKIES } from "@/constants/storage"
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)

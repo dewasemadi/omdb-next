@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react"
 import { describe, it, expect, vi } from "vitest"
 import MoviePoster from "../movie-poster"
+import { UNAVAILABLE } from "@/constants/common"
 
 // Mock next/image
 vi.mock("next/image", () => ({
@@ -24,7 +25,14 @@ describe("MoviePoster", () => {
   })
 
   it("should render fallback when src is N/A", () => {
-    render(<MoviePoster src="N/A" alt="Test Movie" width={300} height={450} />)
+    render(
+      <MoviePoster
+        src={UNAVAILABLE}
+        alt="Test Movie"
+        width={300}
+        height={450}
+      />
+    )
     const fallback = screen.getByTestId("poster-fallback")
     expect(fallback).toBeDefined()
   })

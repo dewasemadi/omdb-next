@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react"
 import { describe, it, expect, vi } from "vitest"
 import SearchBar from "../search-bar"
+import { UNAVAILABLE } from "@/constants/common"
 
 describe("SearchBar", () => {
   it("should render input with correct value", () => {
@@ -45,7 +46,7 @@ describe("SearchBar", () => {
         Year: "2009",
         imdbID: "1",
         Type: "movie",
-        Poster: "N/A",
+        Poster: UNAVAILABLE,
       },
     ]
     render(

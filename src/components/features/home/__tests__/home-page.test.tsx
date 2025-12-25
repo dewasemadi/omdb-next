@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import { describe, it, expect, vi } from "vitest"
 import HomePage from "../index"
 import * as hooks from "@/stores/hooks"
+import { UNAVAILABLE } from "@/constants/common"
 
 // Mock nuqs
 vi.mock("nuqs", () => ({
@@ -69,7 +70,7 @@ describe("HomePage", () => {
   it("should render movie list", () => {
     const mockState = {
       movies: {
-        movies: [{ Title: "Batman", imdbID: "1", Poster: "N/A" }],
+        movies: [{ Title: "Batman", imdbID: "1", Poster: UNAVAILABLE }],
         loading: false,
         error: null,
         autocompletedResults: [],

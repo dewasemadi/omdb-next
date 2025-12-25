@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest"
-import { COOKIES } from "../keys"
+import { COOKIES } from "../storage"
 
 describe("Constants: keys", () => {
   it("should have correct cookie keys", () => {

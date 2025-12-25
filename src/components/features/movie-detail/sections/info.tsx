@@ -3,6 +3,7 @@
 import { Clock, Calendar } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { MovieDetail } from "@/stores/slices/movie-slice"
+import { UNAVAILABLE } from "@/constants/common"
 
 interface InfoSectionProps {
   movie: MovieDetail
@@ -19,12 +20,12 @@ export default function InfoSection({ movie }: InfoSectionProps) {
           >
             {movie.Type}
           </Badge>
-          {movie.Runtime !== "N/A" && (
+          {movie.Runtime !== UNAVAILABLE && (
             <span className="flex items-center gap-1 text-sm text-zinc-500 dark:text-zinc-400">
               <Clock className="w-4 h-4" /> {movie.Runtime}
             </span>
           )}
-          {movie.Released !== "N/A" && (
+          {movie.Released !== UNAVAILABLE && (
             <span className="flex items-center gap-1 text-sm text-zinc-500 dark:text-zinc-400">
               <Calendar className="w-4 h-4" /> {movie.Released}
             </span>

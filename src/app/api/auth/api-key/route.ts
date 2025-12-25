@@ -1,4 +1,4 @@
-import { COOKIES } from "@/constants/keys"
+import { COOKIES } from "@/constants/storage"
 import { cookies } from "next/headers"
 import { NextResponse } from "next/server"
 

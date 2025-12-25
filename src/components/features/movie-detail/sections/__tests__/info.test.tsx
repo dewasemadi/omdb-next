@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import { describe, it, expect } from "vitest"
 import InfoSection from "../info"
+import { UNAVAILABLE } from "@/constants/common"
 
 // Mock MovieDetail object
 const mockMovie = {
@@ -24,10 +25,10 @@ const mockMovie = {
   imdbVotes: "2,000,000",
   imdbID: "tt1375666",
   Type: "movie",
-  DVD: "N/A",
+  DVD: UNAVAILABLE,
   BoxOffice: "$292,576,195",
-  Production: "N/A",
-  Website: "N/A",
+  Production: UNAVAILABLE,
+  Website: UNAVAILABLE,
   Response: "True",
 }
 

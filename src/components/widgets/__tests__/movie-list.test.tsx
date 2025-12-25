@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react"
 import { describe, it, expect, vi, beforeEach } from "vitest"
 import MovieList from "../movie-list"
+import { UNAVAILABLE } from "@/constants/common"
 
 // Mock next/image
 vi.mock("next/image", () => ({
@@ -55,7 +56,7 @@ describe("MovieList", () => {
         Year: "2010",
         imdbID: "1",
         Type: "movie",
-        Poster: "N/A",
+        Poster: UNAVAILABLE,
       },
     ]
     render(<MovieList {...defaultProps} movies={movies} />)
@@ -80,7 +81,7 @@ describe("MovieList", () => {
         Year: "2023",
         imdbID: "123",
         Type: "movie",
-        Poster: "N/A",
+        Poster: UNAVAILABLE,
       },
     ]
     render(<MovieList {...defaultProps} movies={movies} hasMore={true} />)

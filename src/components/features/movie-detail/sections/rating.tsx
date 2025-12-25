@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import { MovieDetail } from "@/stores/slices/movie-slice"
+import { UNAVAILABLE } from "@/constants/common"
 
 interface RatingSectionProps {
   movie: MovieDetail
@@ -10,7 +11,7 @@ interface RatingSectionProps {
 export default function RatingSection({ movie }: RatingSectionProps) {
   return (
     <div className="flex items-center gap-6 pt-4">
-      {movie.imdbRating !== "N/A" && (
+      {movie.imdbRating !== UNAVAILABLE && (
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400 text-black font-bold text-lg shadow-lg shadow-yellow-400/20">
             {movie.imdbRating}
@@ -26,7 +27,7 @@ export default function RatingSection({ movie }: RatingSectionProps) {
         </div>
       )}
 
-      {movie.Metascore !== "N/A" && (
+      {movie.Metascore !== UNAVAILABLE && (
         <div className="flex items-center gap-3">
           <div
             className={cn(
