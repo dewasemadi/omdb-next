@@ -15,6 +15,7 @@ const { mockPush } = vi.hoisted(() => ({
 
 vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: mockPush }),
+  useSearchParams: () => new URLSearchParams("q=Batman+v+Superman"),
 }))
 
 // Mock MovieList widget
@@ -83,6 +84,6 @@ describe("MovieListSection", () => {
     render(<MovieListSection onPosterClick={vi.fn()} />)
     fireEvent.click(screen.getByTestId("movie-click"))
 
-    expect(mockPush).toHaveBeenCalledWith("/movie/tt123")
+    expect(mockPush).toHaveBeenCalledWith("/movie/tt123?q=Batman+v+Superman")
   })
 })

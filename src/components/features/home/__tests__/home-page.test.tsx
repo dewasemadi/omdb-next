@@ -41,6 +41,7 @@ vi.mock("@/components/widgets/poster-modal", () => ({
 // Mock next/navigation
 vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: vi.fn() }),
+  useSearchParams: () => new URLSearchParams("q=Batman+v+Superman"),
 }))
 
 describe("HomePage", () => {

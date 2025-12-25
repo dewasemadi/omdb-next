@@ -51,8 +51,8 @@ export default function SearchBar({
           <Input
             type="text"
             value={query}
-            onChange={(e) => onQueryChange(e.target.value)}
             onFocus={onFocus}
+            onChange={(e) => onQueryChange(e.target.value)}
             placeholder="Search movies..."
             className="w-full border-none bg-transparent py-3.5 pl-12 pr-4 text-zinc-900 placeholder:text-zinc-400 focus-visible:ring-0 dark:bg-transparent dark:text-white h-12"
           />

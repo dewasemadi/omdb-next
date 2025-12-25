@@ -8,6 +8,7 @@ import HeroHeader from "./sections/hero-header"
 import { ApiKeyModal } from "../auth/api-key-modal"
 import { Button } from "@/components/ui/button"
 import { Settings } from "lucide-react"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function HomePage() {
   const [poster, setPoster] = useState<string | null>(null)
@@ -15,7 +16,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-black dark:text-white relative isolate">
       {/* Aurora Background Effect */}
-      <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-blue-500/20 via-purple-500/10 to-transparent dark:from-blue-900/30 dark:via-purple-900/10 pointer-events-none -z-10 blur-3xl opacity-60" />
+      <div className="absolute top-0 left-0 w-full h-125 bg-linear-to-b from-blue-500/20 via-purple-500/10 to-transparent dark:from-blue-900/30 dark:via-purple-900/10 pointer-events-none -z-10 blur-3xl opacity-60" />
 
       {/* Settings Trigger */}
       <div className="absolute right-4 top-4">
@@ -38,16 +39,16 @@ export default function HomePage() {
         <div className="sticky top-6 z-50 w-full max-w-2xl transition-all duration-300 pointer-events-none">
           <div className="pointer-events-auto">
             <Suspense
-              fallback={
-                <div className="h-12 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full animate-pulse" />
-              }
+              fallback={<Skeleton className="h-12 w-full rounded-full" />}
             >
               <SearchSection />
             </Suspense>
           </div>
         </div>
 
-        <MovieListSection onPosterClick={setPoster} />
+        <Suspense fallback={<p>Loading...</p>}>
+          <MovieListSection onPosterClick={setPoster} />
+        </Suspense>
       </div>
 
       <PosterModal posterUrl={poster} onClose={() => setPoster(null)} />

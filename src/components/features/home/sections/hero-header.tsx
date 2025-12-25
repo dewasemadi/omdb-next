@@ -14,7 +14,7 @@ export default function HeroHeader() {
       </Badge>
 
       {/* Main Title */}
-      <h1 className="relative max-w-4xl bg-gradient-to-br from-zinc-900 via-zinc-700 to-zinc-900 bg-clip-text text-5xl font-black tracking-tighter text-transparent dark:from-white dark:via-zinc-200 dark:to-zinc-500 sm:text-7xl md:text-8xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 pb-2">
+      <h1 className="relative max-w-4xl bg-linear-to-br from-zinc-900 via-zinc-700 to-zinc-900 bg-clip-text text-5xl font-black tracking-tighter text-transparent dark:from-white dark:via-zinc-200 dark:to-zinc-500 sm:text-7xl md:text-8xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 pb-2">
         Movie Magic
         <span className="absolute -top-8 -right-8 -z-10 h-24 w-24 rounded-full bg-blue-500/20 blur-2xl dark:bg-blue-500/10 sm:-top-12 sm:-right-12 sm:h-32 sm:w-32"></span>
       </h1>
@@ -26,7 +26,7 @@ export default function HeroHeader() {
       </p>
 
       {/* Decorative elements */}
-      <div className="absolute top-1/2 left-1/2 -z-10 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-tr from-indigo-500/20 to-pink-500/20 blur-[100px] dark:from-indigo-500/10 dark:to-pink-500/10" />
+      <div className="absolute top-1/2 left-1/2 -z-10 h-50 w-50 -translate-x-1/2 -translate-y-1/2 rounded-full bg-linear-to-tr from-indigo-500/20 to-pink-500/20 blur-[100px] dark:from-indigo-500/10 dark:to-pink-500/10" />
     </div>
   )
 }

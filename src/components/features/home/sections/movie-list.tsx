@@ -3,13 +3,14 @@
 import { useAppSelector, useAppDispatch } from "@/stores/hooks"
 import { fetchMovies, incrementPage } from "@/stores/slices/movie-slice"
 import MovieList from "@/components/widgets/movie-list"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 export default function MovieListSection({
   onPosterClick,
 }: {
   onPosterClick: (url: string) => void
 }) {
+  const q = useSearchParams()?.get("q") ?? ""
   const dispatch = useAppDispatch()
   const router = useRouter()
 
@@ -25,7 +26,8 @@ export default function MovieListSection({
   }
 
   const onMovieClick = (id: string) => {
-    router.push(`/movie/${id}`)
+    const params = new URLSearchParams({ q })
+    router.push(`/movie/${id}?${params.toString()}`)
   }
 
   return (

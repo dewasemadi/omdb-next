@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 import Link from "next/link"
 import { ArrowLeft, CircleAlert } from "lucide-react"
 import HeroSection from "./sections/hero"
@@ -53,7 +53,9 @@ export default function MovieDetailPage({ id }: { id: string }) {
       <BackgroundSection movie={movie} />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[400px_1fr] gap-8 md:gap-16 items-start animate-in fade-in slide-in-from-bottom-8 duration-700">
-        <HeroSection movie={movie} />
+        <Suspense fallback={<p>Loading...</p>}>
+          <HeroSection movie={movie} />
+        </Suspense>
 
         {/* Right Column: Details */}
         <div className="flex flex-col justify-center space-y-8 py-4">
