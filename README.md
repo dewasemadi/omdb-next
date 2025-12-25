@@ -67,6 +67,10 @@ This project uses Vitest for unit testing. To run the test suite:
 npm run test
 ```
 
+Below is the latest unit test coverage report.
+
+![Unit Test Coverage](./screenshots/coverage.png)
+
 ## Architecture & Design Patterns
 
 This project follows the **Container/Presentational Pattern** (also known as Smart/Dumb Components) to separate concerns between logic and UI. This ensures modularity, maintainability, and easier testing.
@@ -128,9 +132,3 @@ src/
 Below is the latest Web Vitals performance snapshot for the application.
 
 ![Web Vitals Scores](./screenshots/web-vitals.png)
-
-## Unit Test Coverage
-
-Below is the latest unit test coverage report.
-
-![Unit Test Coverage](./screenshots/coverage.png)
