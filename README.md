@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OMDb Movie Search App
 
-## Getting Started
+A modern, responsive React application built with Next.js 16, Redux Toolkit, and Tailwind CSS 4 to search for movies using the OMDb API.
 
-First, run the development server:
+## Features
+
+- **Movie Search**: Search for movies by title with infinite scrolling results.
+- **Smart Autocomplete**: Live suggestions as you type (starts after 3 characters).
+- **Movie Details**: Comprehensive details page including plot, ratings, and cast.
+- **Poster Preview**: High-quality poster previews with modal view.
+- **Theme Support**: First-class Dark Mode support that adapts to system preferences.
+- **Secure API Key Management**: user-provided API keys are stored securely in HTTP-only cookies, ensuring they are never exposed to client-side JavaScript.
+- **Responsive Design**: Mobile-first approach ensuring a great experience on all devices.
+
+## Prerequisites
+
+This project enforces strict version requirements to ensure stability and compatibility:
+
+- **Node.js**: >= 24.4.1
+- **npm**: >= 11.4.2
+- **OMDb API Key**: Get a free key at [http://www.omdbapi.com/apikey.aspx](http://www.omdbapi.com/apikey.aspx)
+
+## Installation
+
+1. Clone the repository and navigate to the project directory.
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Copy the example environment file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Ensure `.env` contains the correct API URL (default provided):
+
+   ```env
+   OMDB_API_URL=http://www.omdbapi.com
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
+   ```
+
+## Running the Application
+
+1. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+2. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+3. **API Key Setup**:
+   - Upon first visit, you will be prompted to enter your OMDb API Key.
+   - Enter your key to unlock the application features.
+   - You can update your key at any time via the settings icon in the header.
+
+## Running Tests
+
+This project uses Vitest for unit testing. To run the test suite:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture & Design Patterns
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project follows the **Container/Presentational Pattern** (also known as Smart/Dumb Components) to separate concerns between logic and UI. This ensures modularity, maintainability, and easier testing.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Feature Components (Containers / Smart)
 
-## Learn More
+Located in `src/components/features`, these components are responsible for **how things work**.
 
-To learn more about Next.js, take a look at the following resources:
+- **Responsibilities**: Fetching data, interacting with the Redux store, handling user interactions, and managing side effects.
+- **Example**: `SearchSection` handles the input state, dispatches search actions to Redux, and passes the results down to the `SearchBar`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Widget Components (Presentational / Dumb)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Located in `src/components/widgets`, these components are responsible for **how things look**.
 
-## Deploy on Vercel
+- **Responsibilities**: Rendering UI based purely on props. They are stateless (or manage only local UI state like hover effects) and reusable.
+- **Example**: `MovieCard` simply receives a `movie` object and an `onClick` handler. It doesn't know about Redux or the API.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. UI Components (Primitive / Atomic)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Located in `src/components/ui`, these are the building blocks of the design system.
+
+- **Responsibilities**: Providing low-level accessible elements (Buttons, Inputs, Badge).
+- **Tech**: Built with Radix UI primitives and styled via Tailwind CSS.
+
+## Project Structure
+
+```bash
+src/
+├── app/                  # Next.js App Router (Pages, Layouts, API Routes)
+│   ├── api/              # Backend API proxies (OMDb, Auth)
+│   ├── movie/[id]/       # Movie Detail Page
+│   └── page.tsx          # Home Page
+├── components/
+│   ├── features/         # Smart Container Components (Logic Layer)
+│   │   ├── auth/         # API Key Management
+│   │   ├── home/         # Home Page Sections (Hero, Search, List)
+│   │   └── movie-detail/ # Detail Page Sections (Info, Rating, Plot)
+│   ├── ui/               # Primitive UI Components (Button, Input, Card)
+│   └── widgets/          # Reusable Presentational Components (MovieCard, SearchBar)
+├── stores/               # Redux State Management
+│   └── slices/           # Feature Slices (Movie)
+├── lib/                  # Utilities
+└── constants/            # Configuration constants
+```
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (React 19)
+- **Language**: TypeScript
+- **State Management**: Redux Toolkit
+- **Styling**: Tailwind CSS 4
+- **HTTP Client**: Axios
+- **Testing**: Vitest + React Testing Library
+- **State Persistence**: server-side cookies for secure auth state
+
+## Web Vitals Scores
+
+Below is the latest Web Vitals performance snapshot for the application.
+
+![Web Vitals Scores](./screenshots/web-vitals.png)
+
+## Unit Test Coverage
+
+Below is the latest unit test coverage report.
+
+![Unit Test Coverage](./screenshots/coverage.png)

@@ -1,0 +1,3 @@
+export const COOKIES = {
+  OMDB_API_KEY: "omdb_api_key",
+}
