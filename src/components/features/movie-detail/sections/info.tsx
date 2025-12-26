@@ -21,12 +21,12 @@ export default function InfoSection({ movie }: InfoSectionProps) {
             {movie.Type}
           </Badge>
           {movie.Runtime !== UNAVAILABLE && (
-            <span className="flex items-center gap-1 text-sm text-zinc-500 dark:text-zinc-400">
+            <span className="flex items-center gap-1 text-sm text-zinc-600 dark:text-zinc-400">
               <Clock className="w-4 h-4" /> {movie.Runtime}
             </span>
           )}
           {movie.Released !== UNAVAILABLE && (
-            <span className="flex items-center gap-1 text-sm text-zinc-500 dark:text-zinc-400">
+            <span className="flex items-center gap-1 text-sm text-zinc-600 dark:text-zinc-400">
               <Calendar className="w-4 h-4" /> {movie.Released}
             </span>
           )}
@@ -50,7 +50,7 @@ export default function InfoSection({ movie }: InfoSectionProps) {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xl font-bold flex items-center gap-2">Plot</h3>
+        <h2 className="text-xl font-bold flex items-center gap-2">Plot</h2>
         <p className="text-lg leading-relaxed text-zinc-600 dark:text-zinc-300 max-w-2xl">
           {movie.Plot}
         </p>
@@ -58,21 +58,21 @@ export default function InfoSection({ movie }: InfoSectionProps) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-zinc-200 dark:border-zinc-800 pt-8">
         <div>
-          <h4 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-1">
+          <h3 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
             Director
-          </h4>
+          </h3>
           <p className="font-medium">{movie.Director}</p>
         </div>
         <div>
-          <h4 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-1">
+          <h3 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
             Writers
-          </h4>
+          </h3>
           <p className="font-medium">{movie.Writer}</p>
         </div>
         <div className="sm:col-span-2">
-          <h4 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-1">
+          <h3 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
             Starring
-          </h4>
+          </h3>
           <p className="font-medium text-lg">{movie.Actors}</p>
         </div>
       </div>

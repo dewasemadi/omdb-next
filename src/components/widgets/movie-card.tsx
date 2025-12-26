@@ -26,16 +26,16 @@ export default function MovieCard({
     >
       <div className="relative aspect-2/3 w-full cursor-pointer bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
         <MoviePoster
+          fill
           src={movie.Poster}
           alt={movie.Title}
-          fill
           className="transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          iconClassName="w-16 h-16"
           onClick={(e) => {
             e.stopPropagation()
             onPosterClick(movie.Poster)
           }}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          iconClassName="w-16 h-16"
         />
         {/* Overlay on hover */}
         <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10 dark:group-hover:bg-white/5" />
@@ -48,7 +48,7 @@ export default function MovieCard({
         <h3 className="line-clamp-2 text-base font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400">
           {movie.Title}
         </h3>
-        <div className="mt-auto pt-2 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="mt-auto pt-2 flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400">
           <span>{movie.Year}</span>
           <Badge variant="secondary" className="capitalize">
             {movie.Type}

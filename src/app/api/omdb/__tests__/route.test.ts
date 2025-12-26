@@ -15,14 +15,24 @@ vi.mock("next/headers", () => ({
 vi.mock("axios")
 const mockedAxios = vi.mocked(axios) as any
 
+// Mock ENV
+const mockEnv = {
+  OMDB_API_URL: "https://omdbapi.com/",
+}
+vi.mock("@/constants/env", () => ({
+  get ENV() {
+    return mockEnv
+  },
+}))
+
 describe("OMDB API Route", () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    vi.stubEnv("OMDB_API_URL", "https://omdbapi.com/")
+    mockEnv.OMDB_API_URL = "https://omdbapi.com/"
   })
 
   it("should return error if OMDB_API_URL is missing", async () => {
-    vi.stubEnv("OMDB_API_URL", "")
+    mockEnv.OMDB_API_URL = ""
     const req = new NextRequest("http://localhost/api/omdb?s=test")
     const res = await GET(req)
     expect(res.status).toBe(500)

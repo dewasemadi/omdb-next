@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest"
 
 describe("robots", () => {
   beforeEach(() => {
+    vi.resetModules()
     vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://example.com")
   })
 

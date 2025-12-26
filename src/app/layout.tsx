@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Toaster } from "sonner"
-import "./globals.css"
 import { Providers } from "./providers"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import { cn } from "@/lib/utils"
-import { APP_BASE_URL } from "@/constants/env"
+import { ENV } from "@/constants/env"
+import { Fragment } from "react"
+import "./globals.css"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +24,11 @@ export const metadata: Metadata = {
     default: "OMDb Movie Search",
   },
   description: "Search for your favorite movies using the OMDb API.",
-  metadataBase: APP_BASE_URL,
+  metadataBase: new URL(ENV.APP_BASE_URL),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: APP_BASE_URL,
+    url: ENV.APP_BASE_URL,
     siteName: "OMDb Movie Search",
     title: "OMDb Movie Search",
     description: "Search for your favorite movies using the OMDb API.",
@@ -49,6 +50,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {ENV.IMAGE_HOSTS.map((host) => (
+          <Fragment key={host}>
+            <link rel="preconnect" href={`https://${host.trim()}`} />
+            <link rel="dns-prefetch" href={`https://${host.trim()}`} />
+          </Fragment>
+        ))}
+      </head>
       <body
         className={cn(geistSans.variable, geistMono.variable, "antialiased")}
       >

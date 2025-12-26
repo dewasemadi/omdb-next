@@ -25,11 +25,15 @@ vi.mock("nuqs/adapters/next/app", () => ({
   NuqsAdapter: ({ children }: any) => <div data-testid="nuqs">{children}</div>,
 }))
 
-describe("RootLayout", () => {
-  beforeEach(() => {
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://example.com")
-  })
+// Mock env
+vi.mock("@/constants/env", () => ({
+  ENV: {
+    APP_BASE_URL: "https://example.com",
+    IMAGE_HOSTS: ["m.media-amazon.com"],
+  },
+}))
 
+describe("RootLayout", () => {
   it("should render children with providers", () => {
     render(
       <RootLayout>

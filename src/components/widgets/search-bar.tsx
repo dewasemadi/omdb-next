@@ -54,7 +54,7 @@ export default function SearchBar({
             onFocus={onFocus}
             onChange={(e) => onQueryChange(e.target.value)}
             placeholder="Search movies..."
-            className="w-full border-none bg-transparent py-3.5 pl-12 pr-4 text-zinc-900 placeholder:text-zinc-400 focus-visible:ring-0 dark:bg-transparent dark:text-white h-12"
+            className="w-full border-none bg-transparent py-3.5 pl-12 pr-36 text-zinc-900 placeholder:text-zinc-400 focus-visible:ring-0 dark:bg-transparent dark:text-white h-12"
           />
           {query && (
             <Button
@@ -103,10 +103,12 @@ export default function SearchBar({
                     />
                   </div>
                   <div className="flex flex-col">
-                    <span className="font-medium text-zinc-900 dark:text-zinc-100">
+                    <span className="font-medium text-zinc-950 dark:text-zinc-50">
                       {movie.Title}
                     </span>
-                    <span className="text-xs text-zinc-500">{movie.Year}</span>
+                    <span className="text-xs text-zinc-600 dark:text-zinc-400">
+                      {movie.Year}
+                    </span>
                   </div>
                 </li>
               ))}

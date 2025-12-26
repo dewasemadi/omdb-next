@@ -135,4 +135,4 @@ Below is the latest Web Vitals performance for the application.
 
 ![web-vitals](./screenshots/web-vitals.png)
 
-[View Page Report](https://pagespeed.web.dev/analysis/https-omdb-next-beta-vercel-app/flfu0r52i6?form_factor=mobile)
+<a href="https://pagespeed.web.dev/analysis/https-omdb-next-beta-vercel-app/flfu0r52i6?form_factor=mobile" target="\_blank" rel="noopener noreferrer"> View Page Report</a>

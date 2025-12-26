@@ -49,7 +49,7 @@ export default function MovieDetailPage({ id }: { id: string }) {
   }
 
   return (
-    <div className="min-h-screen w-full bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-100 flex items-center justify-center p-4 md:p-10 relative overflow-hidden">
+    <main className="min-h-screen w-full bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-100 flex items-center justify-center p-4 md:p-10 relative overflow-hidden">
       <BackgroundSection movie={movie} />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[400px_1fr] gap-8 md:gap-16 items-start animate-in fade-in slide-in-from-bottom-8 duration-700">
@@ -66,6 +66,6 @@ export default function MovieDetailPage({ id }: { id: string }) {
           <RatingSection movie={movie} />
         </div>
       </div>
-    </div>
+    </main>
   )
 }

@@ -25,8 +25,8 @@ export default function LoadingSection() {
             {/* Meta Tags Row */}
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <div className="h-6 w-16 rounded-full bg-zinc-300 dark:bg-zinc-800 animate-pulse" />
-              <div className="h-4 w-20 rounded bg-zinc-300 dark:bg-zinc-800 animate-pulse" />
-              <div className="h-4 w-24 rounded bg-zinc-300 dark:bg-zinc-800 animate-pulse" />
+              <div className="h-5 w-20 rounded bg-zinc-300 dark:bg-zinc-800 animate-pulse" />
+              <div className="h-5 w-24 rounded bg-zinc-300 dark:bg-zinc-800 animate-pulse" />
             </div>
 
             {/* Title */}

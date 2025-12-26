@@ -1,4 +1,4 @@
-import { APP_BASE_URL } from "@/constants/env"
+import { ENV } from "@/constants/env"
 import { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: `${APP_BASE_URL}/sitemap.xml`,
+    sitemap: `${ENV.APP_BASE_URL}/sitemap.xml`,
   }
 }

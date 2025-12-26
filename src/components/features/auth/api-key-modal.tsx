@@ -8,7 +8,14 @@ import { Key, X } from "lucide-react"
 import axios from "axios"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { FormEvent, ReactNode, useEffect, useState } from "react"
+import {
+  FormEvent,
+  ReactNode,
+  useEffect,
+  useState,
+  cloneElement,
+  isValidElement,
+} from "react"
 
 interface ApiKeyModalProps {
   open?: boolean
@@ -63,9 +70,8 @@ export function ApiKeyModal({
       }
     }
 
-    // Always check key to prefill input
-    checkKey()
-  }, [trigger, isControlled])
+    if (open) checkKey()
+  }, [open, trigger, isControlled])
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -99,11 +105,27 @@ export function ApiKeyModal({
 
   return (
     <>
-      {trigger && (
-        <div onClick={() => onOpenChange?.(true)} className="inline-block">
+      {trigger && isValidElement(trigger) ? (
+        cloneElement(
+          trigger as React.ReactElement<React.HTMLAttributes<HTMLElement>>,
+          {
+            onClick: (e: React.MouseEvent<HTMLElement>) => {
+              const { onClick: originalOnClick } = trigger.props as {
+                onClick?: (e: React.MouseEvent<HTMLElement>) => void
+              }
+              originalOnClick?.(e)
+              onOpenChange?.(true)
+            },
+          }
+        )
+      ) : trigger ? (
+        <span
+          onClick={() => onOpenChange?.(true)}
+          className="inline-block cursor-pointer"
+        >
           {trigger}
-        </div>
-      )}
+        </span>
+      ) : null}
       {createPortal(
         <AnimatePresence>
           {open && (

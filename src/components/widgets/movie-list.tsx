@@ -71,9 +71,9 @@ export default function MovieList({
             />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-zinc-700 dark:text-zinc-300">
+        <h2 className="text-2xl font-bold text-zinc-700 dark:text-zinc-300">
           Ready to watch?
-        </h3>
+        </h2>
         <p className="mt-2 text-zinc-500 dark:text-zinc-400 max-w-sm">
           Enter a movie title in the search bar above to start exploring our
           vast collection of films.
@@ -85,16 +85,19 @@ export default function MovieList({
   return (
     <div className="mt-10 w-full">
       {movies.length > 0 && (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:gap-8">
-          {movies.map((movie, index) => (
-            <MovieCard
-              key={`${movie.imdbID}-${index}`}
-              movie={movie}
-              onPosterClick={onPosterClick}
-              onClick={() => onMovieClick(movie.imdbID)}
-            />
-          ))}
-        </div>
+        <>
+          <h2 className="sr-only">Search Results</h2>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:gap-8">
+            {movies.map((movie, index) => (
+              <MovieCard
+                key={`${movie.imdbID}-${index}`}
+                movie={movie}
+                onPosterClick={onPosterClick}
+                onClick={() => onMovieClick(movie.imdbID)}
+              />
+            ))}
+          </div>
+        </>
       )}
 
       {/* Loading Skeletons */}
