@@ -13,9 +13,14 @@ const { mockPush } = vi.hoisted(() => ({
   mockPush: vi.fn(),
 }))
 
+// Mock next/navigation
 vi.mock("next/navigation", () => ({
-  useRouter: () => ({ push: mockPush }),
   useSearchParams: () => new URLSearchParams("q=Batman+v+Superman"),
+}))
+
+// Mock nextjs-toploader
+vi.mock("nextjs-toploader/app", () => ({
+  useRouter: () => ({ push: mockPush }),
 }))
 
 // Mock MovieList widget

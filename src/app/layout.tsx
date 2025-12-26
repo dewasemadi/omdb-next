@@ -6,6 +6,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app"
 import { cn } from "@/lib/utils"
 import { ENV } from "@/constants/env"
 import { Fragment } from "react"
+import NextTopLoader from "nextjs-toploader"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -61,6 +62,7 @@ export default function RootLayout({
       <body
         className={cn(geistSans.variable, geistMono.variable, "antialiased")}
       >
+        <NextTopLoader showSpinner={false} color="#51a2ff" height={2} />
         <Providers>
           <NuqsAdapter>{children}</NuqsAdapter>
           <Toaster position="bottom-center" richColors />

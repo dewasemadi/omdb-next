@@ -33,6 +33,11 @@ vi.mock("@/constants/env", () => ({
   },
 }))
 
+// Mock nextjs-toploader
+vi.mock("nextjs-toploader", () => ({
+  default: () => <div data-testid="top-loader" />,
+}))
+
 describe("RootLayout", () => {
   it("should render children with providers", () => {
     render(
@@ -45,6 +50,7 @@ describe("RootLayout", () => {
     expect(screen.getByTestId("providers")).toBeDefined()
     expect(screen.getByTestId("nuqs")).toBeDefined()
     expect(screen.getByTestId("toaster")).toBeDefined()
+    expect(screen.getByTestId("top-loader")).toBeDefined()
   })
 
   it("should have correct metadata", () => {

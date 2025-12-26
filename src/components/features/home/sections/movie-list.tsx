@@ -3,7 +3,8 @@
 import { useAppSelector, useAppDispatch } from "@/stores/hooks"
 import { fetchMovies, incrementPage } from "@/stores/slices/movie-slice"
 import MovieList from "@/components/widgets/movie-list"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation"
+import { useRouter } from "nextjs-toploader/app"
 
 export default function MovieListSection({
   onPosterClick,

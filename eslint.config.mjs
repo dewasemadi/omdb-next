@@ -11,6 +11,14 @@ const eslintConfig = defineConfig([
     rules: {
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": "warn",
+      "no-restricted-imports": [
+        "error",
+        {
+          name: "next/navigation",
+          importNames: ["useRouter"],
+          message: "Please import from `nextjs-toploader/app` instead.",
+        },
+      ],
     },
   },
   {
