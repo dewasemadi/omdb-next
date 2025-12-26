@@ -2,7 +2,7 @@
 
 ![image](./public/images/og.jpg)
 
-A modern, responsive React application built with Next.js 16, Redux Toolkit, and Tailwind CSS 4 to search for movies using the OMDb API.
+A modern, responsive React application built with Next.js 16, Redux Toolkit, and Tailwind CSS 4 to search for movies using the [OMDb API](https://www.omdbapi.com).
 
 ## Features
 
