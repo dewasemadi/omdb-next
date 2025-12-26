@@ -48,4 +48,16 @@ describe("MovieCard", () => {
     fireEvent.click(poster)
     expect(onPosterClick).toHaveBeenCalledWith("https://example.com/poster.jpg")
   })
+
+  it("should have accessible buttons", () => {
+    render(
+      <MovieCard movie={mockMovie} onPosterClick={vi.fn()} onClick={vi.fn()} />
+    )
+    expect(
+      screen.getByRole("button", { name: /View poster for Inception/i })
+    ).toBeDefined()
+    expect(
+      screen.getByRole("button", { name: /View details for Inception/i })
+    ).toBeDefined()
+  })
 })

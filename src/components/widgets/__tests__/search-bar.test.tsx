@@ -62,4 +62,31 @@ describe("SearchBar", () => {
     )
     expect(screen.getByText("Avatar")).toBeDefined()
   })
+
+  it("should call onSelectSuggestion when clicked", () => {
+    const onSelectSuggestion = vi.fn()
+    const mockSuggestions = [
+      {
+        Title: "Avatar",
+        Year: "2009",
+        imdbID: "1",
+        Type: "movie",
+        Poster: UNAVAILABLE,
+      },
+    ]
+    render(
+      <SearchBar
+        query="Ava"
+        onQueryChange={() => {}}
+        onSubmit={() => {}}
+        suggestions={mockSuggestions as any}
+        onSelectSuggestion={onSelectSuggestion}
+        showSuggestions={true}
+        setShowSuggestions={() => {}}
+      />
+    )
+    const button = screen.getByRole("button", { name: /Avatar/i })
+    fireEvent.click(button)
+    expect(onSelectSuggestion).toHaveBeenCalledWith("Avatar")
+  })
 })

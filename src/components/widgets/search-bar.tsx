@@ -87,29 +87,31 @@ export default function SearchBar({
           >
             <ul className="py-2">
               {uniqueResults.map((movie) => (
-                <li
-                  key={`${movie.imdbID}-${movie.Title}`}
-                  onClick={() => onSelectSuggestion(movie.Title)}
-                  className="flex cursor-pointer items-center gap-4 px-4 py-3 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700/50"
-                >
-                  <div className="relative h-10 w-8 shrink-0 overflow-hidden rounded bg-zinc-200 dark:bg-zinc-700 font-material shadow-sm">
-                    <MoviePoster
-                      src={movie.Poster}
-                      alt={movie.Title}
-                      fill={true}
-                      className="object-cover"
-                      iconClassName="w-4 h-4"
-                      sizes="32px"
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-medium text-zinc-950 dark:text-zinc-50">
-                      {movie.Title}
-                    </span>
-                    <span className="text-xs text-zinc-600 dark:text-zinc-400">
-                      {movie.Year}
-                    </span>
-                  </div>
+                <li key={`${movie.imdbID}-${movie.Title}`}>
+                  <button
+                    type="button"
+                    onClick={() => onSelectSuggestion(movie.Title)}
+                    className="flex w-full cursor-pointer items-center gap-4 px-4 py-3 text-left transition-colors hover:bg-zinc-100 focus:bg-zinc-100 focus:outline-none dark:hover:bg-zinc-700/50 dark:focus:bg-zinc-700/50"
+                  >
+                    <div className="relative h-10 w-8 shrink-0 overflow-hidden rounded bg-zinc-200 shadow-sm dark:bg-zinc-700 font-material">
+                      <MoviePoster
+                        src={movie.Poster}
+                        alt={movie.Title}
+                        fill={true}
+                        className="object-cover"
+                        iconClassName="w-4 h-4"
+                        sizes="32px"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-medium text-zinc-950 dark:text-zinc-50">
+                        {movie.Title}
+                      </span>
+                      <span className="text-xs text-zinc-600 dark:text-zinc-400">
+                        {movie.Year}
+                      </span>
+                    </div>
+                  </button>
                 </li>
               ))}
             </ul>
