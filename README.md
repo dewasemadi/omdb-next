@@ -42,8 +42,9 @@ This project enforces strict version requirements to ensure stability and compat
    Ensure `.env` contains the correct API URL (default provided):
 
    ```env
-   OMDB_API_URL=http://www.omdbapi.com
    NEXT_PUBLIC_APP_URL=http://localhost:3000
+   NEXT_PUBLIC_OMDB_API_URL=https://www.omdbapi.com
+   NEXT_PUBLIC_IMAGE_HOSTS=m.media-amazon.com # comma separated list of image hosts
    ```
 
 ## Running the Application
