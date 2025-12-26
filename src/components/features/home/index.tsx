@@ -47,7 +47,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={null}>
           <MovieListSection onPosterClick={setPoster} />
         </Suspense>
       </div>

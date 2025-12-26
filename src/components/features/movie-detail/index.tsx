@@ -53,7 +53,7 @@ export default function MovieDetailPage({ id }: { id: string }) {
       <BackgroundSection movie={movie} />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[400px_1fr] gap-8 md:gap-16 items-start animate-in fade-in slide-in-from-bottom-8 duration-700">
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={null}>
           <HeroSection movie={movie} />
         </Suspense>
 
