@@ -84,26 +84,21 @@ export default function MovieList({
 
   return (
     <div className="mt-10 w-full">
-      {movies.length > 0 && (
-        <>
-          <h2 className="sr-only">Search Results</h2>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:gap-8">
-            {movies.map((movie, index) => (
-              <MovieCard
-                key={`${movie.imdbID}-${index}`}
-                movie={movie}
-                onPosterClick={onPosterClick}
-                onClick={() => onMovieClick(movie.imdbID)}
-              />
-            ))}
-          </div>
-        </>
+      {(movies.length > 0 || loading) && (
+        <h2 className="sr-only">Search Results</h2>
       )}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:gap-8">
+        {movies.map((movie, index) => (
+          <MovieCard
+            key={`${movie.imdbID}-${index}`}
+            movie={movie}
+            onPosterClick={onPosterClick}
+            onClick={() => onMovieClick(movie.imdbID)}
+          />
+        ))}
 
-      {/* Loading Skeletons */}
-      {loading && (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:gap-8">
-          {Array.from({ length: 5 }).map((_, i) => (
+        {loading &&
+          Array.from({ length: 5 }).map((_, i) => (
             <div key={`skeleton-${i}`} className="flex flex-col space-y-3">
               <Skeleton className="w-full rounded-xl aspect-2/3" />
               <div className="space-y-2 p-2">
@@ -112,8 +107,7 @@ export default function MovieList({
               </div>
             </div>
           ))}
-        </div>
-      )}
+      </div>
 
       {/* Sentinel */}
       <div ref={observerTarget} className="h-4 w-full" />

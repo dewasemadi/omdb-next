@@ -70,8 +70,8 @@ export function ApiKeyModal({
       }
     }
 
-    if (open) checkKey()
-  }, [open, trigger, isControlled])
+    checkKey()
+  }, [trigger, isControlled])
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
